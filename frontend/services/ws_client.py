@@ -24,7 +24,8 @@ def check_ws_connection_sync(ws_url: Optional[str] = None, timeout: float = 1.5)
     """Synchronously test WebSocket connectivity with short timeout."""
     if not ws_url:
         import streamlit as st
-        base = st.session_state.get("backend_url", "http://127.0.0.1:8000")
+        from frontend.utils.state import get_backend_url
+        base = st.session_state.get("backend_url") if "backend_url" in st.session_state else get_backend_url()
         ws_url = base.replace("http://", "ws://").replace("https://", "wss://") + "/ws"
     try:
         import concurrent.futures

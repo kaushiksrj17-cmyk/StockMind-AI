@@ -7,6 +7,7 @@ from frontend.components.header import render_top_header
 from frontend.components.kpi_cards import render_kpi_card
 from frontend.services.api_client import APIClient
 from frontend.styles.theme import get_theme_colors, get_semantic_signal
+from frontend.utils.state import get_backend_url
 
 
 def render_settings_page(
@@ -199,7 +200,7 @@ def render_settings_page(
             unsafe_allow_html=True,
         )
 
-        current_url = st.session_state.get("backend_url", "http://127.0.0.1:8000")
+        current_url = st.session_state.get("backend_url") or get_backend_url()
         new_url = st.text_input("Backend REST Gateway Endpoint", value=current_url)
         if new_url != current_url:
             st.session_state["backend_url"] = new_url

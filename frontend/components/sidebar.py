@@ -2,6 +2,7 @@
 
 from typing import Any, Dict, List
 import streamlit as st
+from frontend.utils.state import get_backend_url
 
 DEFAULT_INSTRUMENTS = [
     "RELIANCE",
@@ -94,7 +95,7 @@ def render_sidebar(instruments: List[Dict[str, Any]] = None) -> Dict[str, Any]:
             <div style="background: var(--panel); border: 1px solid var(--border); border-radius: 8px; padding: 10px; margin-top: 18px;">
                 <div style="font-size: 0.68rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">BACKEND GATEWAY</div>
                 <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: var(--accent-cyan); word-break: break-all; margin-top: 2px;">
-                    {st.session_state.get('backend_url', 'http://127.0.0.1:8000')}
+                    {st.session_state.get('backend_url') or get_backend_url()}
                 </div>
             </div>
             """,

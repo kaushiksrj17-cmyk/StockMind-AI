@@ -25,7 +25,7 @@ if str(ROOT_DIR) not in sys.path:
 from frontend.utils.markdown_patch import patch_streamlit_markdown
 patch_streamlit_markdown()
 
-from frontend.utils.state import initialize_session_state
+from frontend.utils.state import initialize_session_state, get_backend_url
 from frontend.styles.theme import apply_terminal_theme
 from frontend.services.api_client import get_api_client
 from frontend.components.header import render_terminal_header
@@ -60,7 +60,7 @@ def _safe_render_page(page_name: str, render_callable, **kwargs) -> None:
         st.markdown(
             f"""
             <div style="background: rgba(255, 179, 0, 0.05); border: 1px solid rgba(255, 179, 0, 0.2); border-radius: 8px; padding: 10px 14px; margin-top: 8px; font-size: 0.78rem; color: #94A3B8;">
-                <div><strong>Notice:</strong> Temporary connection disruption to FastAPI Gateway (<code>{st.session_state.get('backend_url', 'http://127.0.0.1:8000')}</code>).</div>
+                <div><strong>Notice:</strong> Temporary connection disruption to FastAPI Gateway (<code>{st.session_state.get('backend_url', get_backend_url())}</code>).</div>
                 <div style="margin-top: 4px; font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: #64748B;">{type(exc).__name__}: {exc}</div>
             </div>
             """,
@@ -303,7 +303,7 @@ def main() -> None:
     if not is_backend_online:
         st.warning(
             f"⚠️ **Backend unavailable — start FastAPI to enable live features.** "
-            f"(`{st.session_state.get('backend_url', 'http://127.0.0.1:8000')}`) — "
+            f"(`{st.session_state.get('backend_url', get_backend_url())}`) — "
             "Terminal operating in sandbox **DEMO / REPLAY** mode."
         )
 

@@ -17,7 +17,10 @@ class APIClient:
     """HTTP Client connecting Streamlit frontend to the FastAPI backend."""
 
     def __init__(self, base_url: Optional[str] = None) -> None:
-        self.base_url = (base_url or "http://127.0.0.1:8000").rstrip("/")
+        if not base_url:
+            from frontend.utils.state import get_backend_url
+            base_url = get_backend_url()
+        self.base_url = base_url.rstrip("/")
         self.api_v1 = f"{self.base_url}/api/v1"
         self._offline_mode = False
 
@@ -820,5 +823,6 @@ class APIClient:
 
 def get_api_client() -> APIClient:
     """Resolve APIClient configured with current session base_url."""
-    base_url = st.session_state.get("backend_url", "http://127.0.0.1:8000")
+    from frontend.utils.state import get_backend_url
+    base_url = st.session_state.get("backend_url") if "backend_url" in st.session_state else get_backend_url()
     return APIClient(base_url=base_url)
