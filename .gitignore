@@ -1,0 +1,87 @@
+# ==============================================================================
+# StockMind-AI — Git Ignore Rules
+# ==============================================================================
+
+# Virtual Environment (strictly local to this project)
+.venv/
+venv/
+ENV/
+env/
+
+# Environment Variables & Secrets (NEVER commit credentials)
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+
+# Local Databases (Keep databases local to USB, do not commit binary SQLite files)
+database/*.db
+database/*.sqlite
+database/*.sqlite3
+*.db
+*.sqlite3
+
+# Python Bytecode & Runtime Cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+
+# Logs
+logs/*
+!logs/.gitkeep
+*.log
+
+# Local Data Directories (Ignore datasets, raw feeds, and caching)
+data/cache/*
+!data/cache/.gitkeep
+data/raw/*
+!data/raw/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
+
+# Machine Learning Models & Checkpoints (Heavy binary files)
+models/*
+!models/.gitkeep
+*.pt
+*.pth
+*.onnx
+*.bin
+*.h5
+*.joblib
+*.pkl
+
+# Temporary, Scratch, & Build Artifacts
+tmp/
+temp/
+*.tmp
+*.bak
+*.swp
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Operating System Files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+.DS_Store
+._*
+
+# IDE & Editor Configurations
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+.project
+.pydevproject
+
+temp_scipy/

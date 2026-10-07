@@ -1,0 +1,610 @@
+/* ==========================================================================
+   StockMind-AI Institutional Financial Intelligence Design System
+   Theme CSS Custom Properties & Component Styles
+   ========================================================================== */
+
+/* --- Root Variables: Dark Mode (Default Institutional AI Terminal) --- */
+:root, [data-theme="dark"] {
+    --bg-primary: #070B14;
+    --bg-secondary: #0B1220;
+    --bg-tertiary: #111827;
+    --panel: #121B2B;
+    --panel-hover: #172338;
+    --border: #243247;
+    --border-subtle: rgba(36, 50, 71, 0.6);
+
+    --accent-cyan: #22D3EE;
+    --accent-blue: #3B82F6;
+    --accent-purple: #8B5CF6;
+
+    --bullish: #22C55E;
+    --bullish-soft: #163A2A;
+    --bullish-glow: rgba(34, 197, 94, 0.35);
+
+    --bearish: #EF4444;
+    --bearish-soft: #3A1A22;
+    --bearish-glow: rgba(239, 68, 68, 0.35);
+
+    --warning: #F59E0B;
+    --warning-soft: rgba(245, 158, 11, 0.15);
+
+    --neutral: #94A3B8;
+    --neutral-soft: rgba(148, 163, 184, 0.15);
+
+    --text-primary: #F8FAFC;
+    --text-secondary: #CBD5E1;
+    --text-muted: #64748B;
+
+    --shadow-card: 0 8px 32px 0 rgba(0, 0, 0, 0.45);
+    --shadow-elevated: 0 12px 40px 0 rgba(0, 0, 0, 0.6);
+    --shadow-cyan-glow: 0 0 20px rgba(34, 211, 238, 0.25);
+}
+
+/* --- Light Mode Variables (High Contrast Financial Analytics) --- */
+[data-theme="light"] {
+    --bg-primary: #F8FAFC;
+    --bg-secondary: #F1F5F9;
+    --bg-tertiary: #E2E8F0;
+    --panel: #FFFFFF;
+    --panel-hover: #F8FAFC;
+    --border: #CBD5E1;
+    --border-subtle: rgba(203, 213, 225, 0.8);
+
+    --accent-cyan: #0284C7;
+    --accent-blue: #2563EB;
+    --accent-purple: #7C3AED;
+
+    --bullish: #16A34A;
+    --bullish-soft: #DCFCE7;
+    --bullish-glow: rgba(22, 163, 74, 0.25);
+
+    --bearish: #DC2626;
+    --bearish-soft: #FEE2E2;
+    --bearish-glow: rgba(220, 38, 38, 0.25);
+
+    --warning: #D97706;
+    --warning-soft: #FEF3C7;
+
+    --neutral: #64748B;
+    --neutral-soft: rgba(100, 116, 139, 0.1);
+
+    --text-primary: #0F172A;
+    --text-secondary: #334155;
+    --text-muted: #64748B;
+
+    --shadow-card: 0 4px 20px 0 rgba(0, 0, 0, 0.06);
+    --shadow-elevated: 0 8px 30px 0 rgba(0, 0, 0, 0.1);
+    --shadow-cyan-glow: 0 0 15px rgba(2, 132, 199, 0.2);
+}
+
+/* ==========================================================================
+   1. AI Background & Global Body Styling
+   ========================================================================== */
+.stApp {
+    background-color: var(--bg-primary);
+    background-image:
+        radial-gradient(circle at 50% -10%, rgba(34, 211, 238, 0.05) 0%, rgba(59, 130, 246, 0.02) 40%, transparent 70%),
+        linear-gradient(to right, rgba(36, 50, 71, 0.15) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(36, 50, 71, 0.15) 1px, transparent 1px);
+    background-size: 100% 100%, 40px 40px, 40px 40px;
+    background-attachment: fixed;
+    color: var(--text-primary);
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    letter-spacing: -0.01em;
+}
+
+[data-theme="light"] .stApp {
+    background-color: var(--bg-primary);
+    background-image:
+        radial-gradient(circle at 50% -10%, rgba(2, 132, 199, 0.04) 0%, transparent 60%),
+        linear-gradient(to right, rgba(203, 213, 225, 0.35) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(203, 213, 225, 0.35) 1px, transparent 1px);
+    background-size: 100% 100%, 40px 40px, 40px 40px;
+}
+
+/* Code & Numerical Typography */
+code, pre, .terminal-mono, [data-testid="stMetricValue"] {
+    font-family: 'JetBrains Mono', monospace !important;
+}
+
+/* Streamlit Header Glass Blur */
+header[data-testid="stHeader"] {
+    background: rgba(7, 11, 20, 0.75) !important;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+}
+
+[data-theme="light"] header[data-testid="stHeader"] {
+    background: rgba(248, 250, 252, 0.8) !important;
+}
+
+/* ==========================================================================
+   2. Glassmorphic Cards & Elevated Panels
+   ========================================================================== */
+.term-card {
+    background: var(--panel);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 20px;
+    margin-bottom: 16px;
+    box-shadow: var(--shadow-card);
+    transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.term-card:hover {
+    border-color: rgba(34, 211, 238, 0.35);
+    background: var(--panel-hover);
+    box-shadow: 0 10px 36px 0 rgba(34, 211, 238, 0.06);
+    transform: translateY(-1px);
+}
+
+.glass-panel {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px;
+    margin-bottom: 14px;
+}
+
+/* ==========================================================================
+   3. Sidebar Styling & Navigation Hierarchy
+   ========================================================================== */
+section[data-testid="stSidebar"] {
+    background-color: var(--bg-secondary) !important;
+    border-right: 1px solid var(--border) !important;
+    padding-top: 10px;
+}
+
+/* Base text color inside sidebar */
+section[data-testid="stSidebar"],
+section[data-testid="stSidebar"] * {
+    color: var(--text-primary);
+}
+
+/* Navigation Section Headers (MARKET, AI INTELLIGENCE, RISK & PORTFOLIO, SYSTEM) */
+[data-testid="stSidebar"] [data-testid="stNavSectionHeader"],
+[data-testid="stSidebarNav"] [data-testid="stNavSectionHeader"],
+header[data-testid="stNavSectionHeader"],
+[data-testid="stSidebarNavItems"] header,
+[data-testid="stSidebarNav"] span[data-testid="stSidebarNavSectionHeader"] {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    font-size: 0.72rem !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.1em !important;
+    text-transform: uppercase !important;
+    color: var(--accent-cyan) !important;
+    background: rgba(34, 211, 238, 0.08) !important;
+    border-left: 3px solid var(--accent-cyan) !important;
+    border-radius: 4px !important;
+    padding: 7px 10px !important;
+    margin-top: 14px !important;
+    margin-bottom: 6px !important;
+    margin-left: 6px !important;
+    margin-right: 6px !important;
+    cursor: pointer !important;
+    user-select: none !important;
+    transition: all 0.2s ease !important;
+}
+
+[data-testid="stSidebar"] [data-testid="stNavSectionHeader"]:hover,
+[data-testid="stSidebarNav"] [data-testid="stNavSectionHeader"]:hover,
+header[data-testid="stNavSectionHeader"]:hover {
+    background: rgba(34, 211, 238, 0.15) !important;
+    color: #67E8F9 !important;
+}
+
+[data-testid="stSidebar"] [data-testid="stNavSectionHeader"] span,
+[data-testid="stSidebar"] [data-testid="stNavSectionHeader"] p,
+[data-testid="stSidebar"] [data-testid="stNavSectionHeader"] div {
+    color: var(--accent-cyan) !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.09em !important;
+    font-size: 0.72rem !important;
+}
+
+[data-testid="stSidebar"] [data-testid="stNavSectionHeader"] svg {
+    fill: var(--accent-cyan) !important;
+    color: var(--accent-cyan) !important;
+    opacity: 0.85 !important;
+}
+
+[data-testid="stNavSectionHeader"] div {
+    visibility: visible !important;
+}
+
+/* Navigation List Item Containers */
+[data-testid="stSidebarNavLinkContainer"] {
+    margin: 2px 4px !important;
+}
+
+/* Navigation Links */
+[data-testid="stSidebarNavLink"],
+[data-testid="stSidebarNav"] a {
+    display: flex !important;
+    align-items: center !important;
+    border-radius: 6px !important;
+    margin: 2px 6px !important;
+    padding: 8px 12px !important;
+    color: #E2E8F0 !important;
+    font-size: 0.84rem !important;
+    font-weight: 500 !important;
+    background: transparent !important;
+    transition: all 0.15s ease-in-out !important;
+    border-left: 3px solid transparent !important;
+    text-decoration: none !important;
+}
+
+[data-testid="stSidebarNavLink"] span,
+[data-testid="stSidebarNavLink"] p {
+    color: #E2E8F0 !important;
+    font-size: 0.84rem !important;
+    font-weight: 500 !important;
+}
+
+[data-testid="stSidebarNavLink"]:hover,
+[data-testid="stSidebarNav"] a:hover {
+    background: rgba(36, 50, 71, 0.7) !important;
+    color: #FFFFFF !important;
+    border-left: 3px solid rgba(34, 211, 238, 0.6) !important;
+    transform: translateX(2px) !important;
+}
+
+[data-testid="stSidebarNavLink"]:hover span,
+[data-testid="stSidebarNavLink"]:hover p {
+    color: #FFFFFF !important;
+}
+
+/* Active / Selected Page in Sidebar */
+[data-testid="stSidebarNavLink"][aria-current="page"],
+[data-testid="stSidebarNav"] a[aria-current="page"] {
+    background: linear-gradient(90deg, rgba(34, 211, 238, 0.18) 0%, rgba(34, 211, 238, 0.04) 100%) !important;
+    color: #38BDF8 !important;
+    font-weight: 700 !important;
+    border-left: 3px solid var(--accent-cyan) !important;
+    box-shadow: inset 0 0 16px rgba(34, 211, 238, 0.08) !important;
+}
+
+[data-testid="stSidebarNavLink"][aria-current="page"] span,
+[data-testid="stSidebarNavLink"][aria-current="page"] p {
+    color: #38BDF8 !important;
+    font-weight: 700 !important;
+}
+
+/* Sidebar User Controls Area */
+[data-testid="stSidebarUserContent"] {
+    padding-top: 10px !important;
+}
+
+section[data-testid="stSidebar"] label,
+section[data-testid="stSidebar"] label p {
+    font-size: 0.72rem !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.06em !important;
+    color: #94A3B8 !important;
+    margin-bottom: 4px !important;
+}
+
+section[data-testid="stSidebar"] div[data-baseweb="select"] > div {
+    background-color: var(--panel) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 6px !important;
+}
+
+section[data-testid="stSidebar"] div[data-baseweb="select"] span {
+    color: #F1F5F9 !important;
+    font-weight: 600 !important;
+}
+
+section[data-testid="stSidebar"] [data-testid="stCheckbox"] span {
+    color: #E2E8F0 !important;
+    font-size: 0.8rem !important;
+    font-weight: 600 !important;
+}
+
+/* ==========================================================================
+   4. Reusable KPI Card Styling
+   ========================================================================== */
+.kpi-container {
+    background: linear-gradient(135deg, var(--panel) 0%, var(--bg-tertiary) 100%);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 18px;
+    text-align: left;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+    transition: all 0.2s ease;
+}
+
+.kpi-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--accent-cyan);
+}
+
+.kpi-container.kpi-bullish::before {
+    background: var(--bullish);
+}
+
+.kpi-container.kpi-bearish::before {
+    background: var(--bearish);
+}
+
+.kpi-container.kpi-warning::before {
+    background: var(--warning);
+}
+
+.kpi-container.kpi-purple::before {
+    background: var(--accent-purple);
+}
+
+.kpi-container:hover {
+    border-color: rgba(34, 211, 238, 0.4);
+    transform: translateY(-1px);
+}
+
+.kpi-title {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.kpi-value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.2;
+}
+
+.kpi-delta-pos {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--bullish);
+    margin-top: 4px;
+}
+
+.kpi-delta-neg {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--bearish);
+    margin-top: 4px;
+}
+
+.kpi-delta-neutral {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    margin-top: 4px;
+}
+
+.kpi-subtitle {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    margin-top: 4px;
+}
+
+/* ==========================================================================
+   5. Market Status & Provenance Badges
+   ========================================================================== */
+.badge-live {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--bullish-soft);
+    color: var(--bullish);
+    border: 1px solid rgba(34, 197, 94, 0.4);
+    border-radius: 20px;
+    padding: 3px 10px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+}
+
+.badge-replay {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--warning-soft);
+    color: var(--warning);
+    border: 1px solid rgba(245, 158, 11, 0.4);
+    border-radius: 20px;
+    padding: 3px 10px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+}
+
+.badge-historical {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(59, 130, 246, 0.12);
+    color: var(--accent-blue);
+    border: 1px solid rgba(59, 130, 246, 0.4);
+    border-radius: 20px;
+    padding: 3px 10px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+}
+
+.badge-prediction {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(139, 92, 246, 0.12);
+    color: var(--accent-purple);
+    border: 1px solid rgba(139, 92, 246, 0.4);
+    border-radius: 20px;
+    padding: 3px 10px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+}
+
+/* Pulsing Status Dot */
+.pulse-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.pulse-green {
+    background: var(--bullish);
+    box-shadow: 0 0 8px var(--bullish);
+    animation: terminal-pulse 1.8s infinite;
+}
+
+.pulse-cyan {
+    background: var(--accent-cyan);
+    box-shadow: 0 0 8px var(--accent-cyan);
+    animation: terminal-pulse 1.8s infinite;
+}
+
+.pulse-amber {
+    background: var(--warning);
+    box-shadow: 0 0 8px var(--warning);
+}
+
+.pulse-red {
+    background: var(--bearish);
+    box-shadow: 0 0 8px var(--bearish);
+}
+
+@keyframes terminal-pulse {
+    0% { transform: scale(0.95); opacity: 0.7; }
+    50% { transform: scale(1.2); opacity: 1; }
+    100% { transform: scale(0.95); opacity: 0.7; }
+}
+
+/* ==========================================================================
+   6. Alert Cards (INFO, SUCCESS, WARNING, CRITICAL)
+   ========================================================================== */
+.alert-card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.alert-card.info {
+    border-left: 3px solid var(--accent-cyan);
+}
+.alert-card.success {
+    border-left: 3px solid var(--bullish);
+}
+.alert-card.warning {
+    border-left: 3px solid var(--warning);
+}
+.alert-card.critical {
+    border-left: 3px solid var(--bearish);
+    box-shadow: 0 0 12px rgba(239, 68, 68, 0.15);
+}
+
+/* ==========================================================================
+   7. Form Controls & Streamlit Native Elements
+   ========================================================================== */
+.stButton > button {
+    background: linear-gradient(135deg, var(--panel) 0%, var(--panel-hover) 100%) !important;
+    border: 1px solid var(--border) !important;
+    color: var(--text-primary) !important;
+    border-radius: 8px !important;
+    font-weight: 600 !important;
+    font-size: 0.82rem !important;
+    padding: 8px 16px !important;
+    transition: all 0.2s ease !important;
+}
+
+.stButton > button:hover {
+    border-color: var(--accent-cyan) !important;
+    box-shadow: 0 0 14px rgba(34, 211, 238, 0.2) !important;
+    color: var(--text-primary) !important;
+    transform: translateY(-1px) !important;
+}
+
+.stButton > button[kind="primary"] {
+    background: linear-gradient(135deg, #22D3EE 0%, #3B82F6 100%) !important;
+    color: #070B14 !important;
+    border: none !important;
+    font-weight: 700 !important;
+    box-shadow: 0 0 16px rgba(34, 211, 238, 0.35) !important;
+}
+
+/* Tabs Styling */
+.stTabs [data-baseweb="tab-list"] {
+    gap: 8px;
+    border-bottom: 1px solid var(--border) !important;
+    background: transparent;
+    padding-bottom: 4px;
+}
+
+.stTabs [data-baseweb="tab"] {
+    background: transparent !important;
+    color: var(--text-secondary) !important;
+    font-size: 0.82rem !important;
+    font-weight: 600 !important;
+    padding: 8px 14px !important;
+    border-radius: 6px 6px 0 0 !important;
+    border: none !important;
+}
+
+.stTabs [aria-selected="true"] {
+    color: var(--accent-cyan) !important;
+    border-bottom: 2px solid var(--accent-cyan) !important;
+}
+
+/* Selectbox & Inputs */
+div[data-baseweb="select"] > div, div[data-baseweb="input"] > div {
+    background-color: var(--bg-tertiary) !important;
+    border-color: var(--border) !important;
+    color: var(--text-primary) !important;
+    border-radius: 8px !important;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-cyan);
+}
